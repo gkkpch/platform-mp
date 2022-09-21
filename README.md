@@ -1,14 +1,19 @@
 
-## Prerequisites for building with Armbian
+## Prerequisites/ recommendation for building with Armbian
 
-- x64 machine with at least 2GB of memory and ~35GB of disk space for a VM, container or native OS,
-- Ubuntu Hirsute 21.04 x64 for native building or any [Docker](https://docs.armbian.com/Developer-Guide_Building-with-Docker/) capable x64 Linux for containerised,
-  - Hirsute is required for newer non-LTS releases.. ex: Bullseye, Sid, Groovy, Hirsute
-  - If building for LTS releases.. ex: Focal, Bionic, Buster, it is possible to use Ubuntu 20.04 Focal, but it is not supported
-- superuser rights (configured sudo or root access).
+- x86/x64 machine running any OS; at least 4G RAM, SSD, quad core (recommended),
+- VirtualBox or similar virtualization software (highly recommended with a minimum of 25GB hard disk space for the virtual disk image)
+- The officially supported compilation environment is Ubuntu Jammy 22.04.x amd64 only!
+- Superuser rights (configured sudo or root access).
 
-Note 5.x.y in the instructions stands for the *current* mainline kernel version used by Armbian.  
-This is **5.10.y** at the time of writing this documentation.
+**Note on current requirements**
+Compilation environment support changes from time to time.
+A Virtualbox is therefore strongly advised as it gives you more flexibility when your build environment needs to be changed.
+Please check https://docs.armbian.com/Developer-Guide_Build-Preparation/ for current needs.
+
+**Note on kernel version**
+Kernel 5.x.y in the instructions stands for the *current* mainline kernel version used by Armbian.
+This was **5.10.y** at the time of writing this documentation.
 
 ## How to build the Armbian kernel and u-boot for Volumio?
 
@@ -24,18 +29,24 @@ cat <<-EOF > compile-custom-mp1.sh
 sudo ./compile.sh  BOARD=khadas-vim3l BRANCH=current KERNEL_ONLY=yes KERNEL_CONFIGURE=yes KERNEL_KEEP_CONFIG=yes CREATE_PATCHES=yes
 EOF
 sudo chmod +x compile-custom-mp1.sh
-mkdir output
+mkdir -p output/config
+mkdir -p output/patch
 cd ..
+cp armbian-volumio//output/config
+cp armbian-volumio/output/patch
 git clone https://github.com/gkkpch/platform-mp
 cd platform-mp
 tar xfJ mp1.tar.xz
 cd ..
+cp platform-mp/mp1/armbian/config/* armbian-volumio//output/config
+cp platform-mp/mp1/armbian/patch/* armbian-volumio/output/patch
 ```
 
 ## Prepare kernel configurations
 
-**Important:**  
-Before starting the very first compile with *./compile-custom-mp1.sh*, you need to 
+**Important:**
+Before starting the very first compile with *./compile-custom-mp1.sh*, you need to
+- create armbian-volumio/output
 - copy ```linux-meson64-current.config``` from *platform-mp/mp1/armbian* to *armbian-volumio/output/config*.
 
 ## Start compiling u-boot and kernel
@@ -52,27 +63,27 @@ The script has 6 main stages
 - conclusion
 
 ## Stage Armbian main preparation
-*./compile-custom-mp1.sh* will download all further prerequisites.  
-Once finished downloading and applying all Armbian standard patches,  you get the opportunity to add your own patches (valid both for u-boot and kernel). The script stops for two pre-defined patch breaks. 
+*./compile-custom-mp1.sh* will download all further prerequisites.
+Once finished downloading and applying all Armbian standard patches,  you get the opportunity to add your own patches (valid both for u-boot and kernel). The script stops for two pre-defined patch breaks.
 
 ## Stage break 1, u-boot patching
-The first patch break is before compiling u-boot, now modify the sources in *armbian-volumio/output/cache/sources/u-boot/* in the rare occasion that you have them.  
-Press \<Enter> when finished, also when you don't have any (which would be the  normal case).  
+The first patch break is before compiling u-boot, now modify the sources in *armbian-volumio/output/cache/sources/u-boot/* in the rare occasion that you have them.
+Press \<Enter> when finished, also when you don't have any (which would be the  normal case).
 
 ## Stage u-boot compilation
 Self-explanatory
 
 ## Break 2, kernel patching
-The 2nd patch break will be before compiling the kernel.  
-Do any modifications in *output/cache/sources/linux-mainline/linux-5.x.y* (or you when don't have any) press \<Enter>.  
-**==>** You will find your patches here: *armbian-volumio/output/patch/kernel-meson64-current.patch*.  
+The 2nd patch break will be before compiling the kernel.
+Do any modifications in *output/cache/sources/linux-mainline/linux-5.x.y* (or you when don't have any) press \<Enter>.
+**==>** You will find your patches here: *armbian-volumio/output/patch/kernel-meson64-current.patch*.
 *kernel-meson64-current.patch* is incremental (meaning your existing ones will be carried over).
 
 ## Kernel compilation
-Next step is Kernel Configuration, just \<exit> when you do not want to modify anything. If you modify enything, do not forget to press \<save>.   
+Next step is Kernel Configuration, just \<exit> when you do not want to modify anything. If you modify enything, do not forget to press \<save>.
 
-**Note 1:** Kernel comnfiguration settings will be saved for the next build (also when you left with \<exit> without modification).  
-**Note 2:** When you want to keep a backup of kernel configurations and patches outside the armbian tree, copy them from *armbian/output/patch/* and *armbian/output/config*  
+**Note 1:** Kernel comnfiguration settings will be saved for the next build (also when you left with \<exit> without modification).
+**Note 2:** When you want to keep a backup of kernel configurations and patches outside the armbian tree, copy them from *armbian/output/patch/* and *armbian/output/config*
 
 ## Conclusion
 
@@ -86,22 +97,22 @@ linux-u-boot-current-meson64_x.y.z-trunk_arm64.deb
 Where *x.y.z* is the used armbian version.
 This is **22.08.0** at the tiome of writing this documentation.
 
-Refer to ```armbian-firmware-full_x.y.z-trunk_all.deb``` for a full copy of all current firmware for 5.x.y  
+Refer to ```armbian-firmware-full_x.y.z-trunk_all.deb``` for a full copy of all current firmware for 5.x.y
 
 ## Generating platform files
 
-This will be part of the mp1 build recipe.  
+This will be part of the mp1 build recipe.
 It will unpack firmware, image and u-boot debs and put the information straight into the right place.
 
 ## Note on recompiling
 **Recompiling**
 
-Restart the u-boot and kernel compilation.  
+Restart the u-boot and kernel compilation.
 ```
 ./compile-custom-mp1.sh
 ```
-This time you only need to pay attention to the 2 patch breaks and the kernel config.  
-Your previous patches and kernel configuration changes will be taken into account (all incremental). 
+This time you only need to pay attention to the 2 patch breaks and the kernel config.
+Your previous patches and kernel configuration changes will be taken into account (all incremental).
 
 
 
@@ -111,7 +122,7 @@ Your previous patches and kernel configuration changes will be taken into accoun
 <br />
 <br />
 <br />
-<sub>Sept/Oct. 2022/ Gé koerkamp   
-<br />ge.koerkamp@gmail.com  
-<br />22.09.2022 v1.0 Initial   
+<sub>Sept/Oct. 2022/ Gé koerkamp
+<br />ge.koerkamp@gmail.com
+<br />22.09.2022 v1.0 Initial
 
