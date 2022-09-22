@@ -16,7 +16,7 @@
 * [x] Setup platform files
 * [x] Create default kernel config **linux-meson64-current.config** from the default Ubuntu image
 * [x] Create default patch file **kernel-meson64-current.patch** (using usb audio as an example)
-* [] Test "automated" Armbian kernel/u-boot build for mp1
+* [x] Test "automated" Armbian kernel/u-boot build for mp1
 * [] Compress platform files
 * [] Check u-boot "dd" offsets
 
@@ -32,7 +32,13 @@
 
 
 
-
-
 * [] Create autoinstaller 
+
+
+<br />
+<br />
+<br />
+<br />
+[sub]
+2022.09.22/ Gé
 

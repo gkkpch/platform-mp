@@ -31,6 +31,10 @@ echo "Prepare Armbian build script"
 cd armbian-volumio
 cat <<-EOF > compile-custom-mp1.sh
 sudo ./compile.sh  BOARD=khadas-vim3l BRANCH=current KERNEL_ONLY=yes KERNEL_CONFIGURE=yes KERNEL_KEEP_CONFIG=yes CREATE_PATCHES=yes
+cp output/debs/armbian-firmware_*.deb ../platform-mp/armbian/debs
+cp output/debs/linux-headers-*.deb ../platform-mp/armbian/debs
+cp output/debs/linux-image-*.deb ../platform-mp/armbian/debs
+cp output/debs/linux-u-boot-*.deb ../platform-mp/armbian/debs
 EOF
 sudo chmod +x compile-custom-mp1.sh
 #
@@ -106,7 +110,7 @@ linux-image-current-meson64_x.y.z-trunk_arm64.deb
 linux-u-boot-current-meson64_x.y.z-trunk_arm64.deb
 ```
 Where *x.y.z* is the used armbian version.
-This is **22.08.0** at the tiome of writing this documentation.
+This is **22.11.0** at the tiome of writing this documentation.
 
 Refer to ```armbian-firmware-full_x.y.z-trunk_all.deb``` for a full copy of all current firmware for 5.x.y
 
