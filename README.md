@@ -22,24 +22,35 @@ Download the armbian build system
 sudo apt-get install git
 git clone https://github.com/armbian/build armbian-volumio
 ```
-Prepare the customized build script
+
+Prepare the customized build script & build environment
 ```
+#
+echo "Prepare Armbian build script"
+#
 cd armbian-volumio
 cat <<-EOF > compile-custom-mp1.sh
 sudo ./compile.sh  BOARD=khadas-vim3l BRANCH=current KERNEL_ONLY=yes KERNEL_CONFIGURE=yes KERNEL_KEEP_CONFIG=yes CREATE_PATCHES=yes
 EOF
 sudo chmod +x compile-custom-mp1.sh
+#
+echo "Prepare build for Volumio"
+#
 mkdir -p output/config
 mkdir -p output/patch
 cd ..
-cp armbian-volumio//output/config
-cp armbian-volumio/output/patch
-git clone https://github.com/gkkpch/platform-mp
+#
+echo "Get Volumio platform files"
+#
+git clone https://${GH_TOKEN}github.com/gkkpch/platform-mp
 cd platform-mp
 tar xfJ mp1.tar.xz
 cd ..
-cp platform-mp/mp1/armbian/config/* armbian-volumio//output/config
-cp platform-mp/mp1/armbian/patch/* armbian-volumio/output/patch
+#
+echo "Move armbian-volumio build presets to their location"
+#
+cp platform-mp/armbian/config/* armbian-volumio//output/config
+cp platform-mp/armbian/patch/* armbian-volumio/output/patch
 ```
 
 ## Prepare kernel configurations
@@ -47,7 +58,7 @@ cp platform-mp/mp1/armbian/patch/* armbian-volumio/output/patch
 **Important:**
 Before starting the very first compile with *./compile-custom-mp1.sh*, you need to
 - create armbian-volumio/output
-- copy ```linux-meson64-current.config``` from *platform-mp/mp1/armbian* to *armbian-volumio/output/config*.
+- copy ```linux-meson64-current.config``` from *platform-mp/armbian* to *armbian-volumio/output/config*.
 
 ## Start compiling u-boot and kernel
 ```
