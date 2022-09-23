@@ -9,7 +9,10 @@
 * [x] Setup VM Ubuntu Jammy
 * [x] Copy DEXQ build/ adapt for mp1
 * [x] Create a default Armbian buster image as a reference
-* [] Test default Armbian image
+* [failed] Test default Armbian image
+    * [] Fix mainline boot issue (factory initialised boards won't boot mainline kernel)
+    * [] Check Khadas/ Armbian forum for help
+    * [] Extract mainline boot script for reference
 
 **Building volumio-specific kernel and u-boot**
 * [x] Develop "automated" Armbian kernel/u-boot build for mp1
@@ -32,6 +35,7 @@
 
 
 
+
 * [] Create autoinstaller 
 
 
@@ -40,5 +44,5 @@
 <br />
 <br />
 [sub]
-2022.09.22/ Gé
+2022.09.23/ Gé
 
