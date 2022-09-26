@@ -11,7 +11,11 @@
 * [x] Create a default Armbian buster image as a reference
 * [failed] Test default Armbian image
     * [] Fix mainline boot issue (factory initialised boards won't boot mainline kernel)
-    * [] Check Khadas/ Armbian forum for help
+    Some work has been done on this today, but not concluded yet. The only option seems to be erasing emmc,
+    which might cause additional problems when testing the autoinstaller. This would need support
+    from a Volumio core team member on a fresh factory vim3l board (old and new).
+    * [x] Check Khadas/ Armbian forum for help
+    Seems clearing emmc is an option
     * [] Extract mainline boot script for reference
 
 **Building volumio-specific kernel and u-boot**
@@ -33,7 +37,7 @@
 
 
 
-
+Next dev day: 27.09.2022
 
 
 * [] Create autoinstaller 
@@ -44,5 +48,5 @@
 <br />
 <br />
 [sub]
-2022.09.23/ Gé
+2022.09.26/ Gé
 
