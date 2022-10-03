@@ -11,13 +11,12 @@
 * [x] Create a default Armbian buster image as a reference
 * [failed] Test default Armbian image
     * [x] Fix mainline boot issue (factory initialised boards won't boot mainline kernel)
-    Some work has been done on this today, but not concluded yet. The only option seems to be erasing emmc,
-    which might cause additional problems when testing the autoinstaller. This would need support
-    from a Volumio core team member on a fresh factory vim3l board (old and new).
+    Erase emmc with "store init 3", then boot from SD. Works with the "old" board series. 
+    This would also need support from a Volumio core team member on a fresh factory vim3l board ("new" series ref. Andrey).
     * [x] Check Khadas/ Armbian forum for help
-    * [] Test boot issue, from the above, "Old" factory boards now have to be treated the same as the "new"
-    Seems clearing emmc is a must
-    * [] Extract mainline boot script for reference
+    * [x] Test boot issue
+    * [x] Extract mainline boot script for reference
+**03.10.22/ Preparation completed**
 
 **Building volumio-specific kernel and u-boot**
 * [x] Develop "automated" Armbian kernel/u-boot build for mp1
@@ -25,8 +24,8 @@
 * [x] Create default kernel config **linux-meson64-current.config** from the default Ubuntu image
 * [x] Create default patch file **kernel-meson64-current.patch** (using usb audio as an example)
 * [x] Test "automated" Armbian kernel/u-boot build for mp1
-* [] Compress platform files
-* [] Check u-boot "dd" offsets
+* [x] Compress platform files
+* [x] Check u-boot "dd" offsets
 
 **Build recipe for mp1 image**
 * [] Develop build recipe for mp1 mainline
@@ -35,10 +34,6 @@
 * [] Debug boot volumio image
 
 
-
-
-
-Next dev day: 27.09.2022
 
 
 * [] Create autoinstaller 
@@ -52,5 +47,5 @@ Next dev day: 27.09.2022
 <br />
 <br />
 [sub]
-2022.10.02/ Gé
+2022.10.03/ Gé
 
