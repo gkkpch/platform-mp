@@ -29,8 +29,14 @@
 
 **Build recipe for mp1 image**
 * [] Develop build recipe for mp1 mainline
-* [] Add wireless and bluetooth
+    * [] Extract uboot env (use 'printenv' from uboot cmd line)
+        * [] Compare with Volumio's legacy uboot env    
 * [] Setup mainline boot script
+    * [] Volumio-like u-boot script? 
+    * [] Stick to the Armbian script standard?
+    * [] Mix the two?
+    * [] Watch out for board difference VIM3 and VIM3L (user space may need to know)
+* [] Add wireless and bluetooth
 * [] Debug boot volumio image
 
 
