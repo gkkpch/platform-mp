@@ -42,7 +42,11 @@
 * [] Add wireless and bluetooth (note VIM3/VIM3L differences)
 * [] Debug boot volumio image
 
-
+**Mainline u-boot boot issue with Volumio updater**
+* [failed] Boot mainline kernel with legacy u-boot
+* [x] System still bootable from sd when update u-boot on emmc crashed? 
+* [failed] Emergency option, fix via bootloader special recover image (only works on booted device).
+* [] u-boot recovery via specific initrd (simplified installer) This is **THE** killer option.
 
 
 * [] Create autoinstaller 
