@@ -41,8 +41,10 @@
         * [] or .. stick to the Armbian script standard?
         * [] or .. mix the two?
     * [] Watch out for board difference VIM3 and VIM3L (user space may need to know)
-    * [] Resetting GPIOH_4 to low and echo (gpio 35) 
-* [] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
+    * [] Resetting GPIOH_4 to low and echo (gpio 35)
+    * [] Create boot.scr form boot.ini (boot.ini not working with mainline)
+    * [] Recreate "multiboot": "usb -> sd -> emmc" sequence 
+* [x] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
 * [] Add wireless and bluetooth (note VIM3/VIM3L differences)
 * [] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [] Debug boot volumio image
@@ -64,5 +66,5 @@
 <br />
 <br />
 [sub]
-2022.10.04/ Gé
+2022.10.12/ Gé
 
