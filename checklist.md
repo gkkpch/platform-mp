@@ -33,21 +33,25 @@
     * [] Extract uboot env (use 'printenv' from u-boot cmd line)
         * [] Compare with Volumio's legacy u-boot env 
         * [] Compare with Armbian u-boot script   
+* [] Add Volumio patches
+    * [] Enable UART3
+    * [] Support for higher I2S frequencies (384Khz, check legacy patch)
 * [] Setup mainline boot script
     * [] Volumio-like u-boot script? 
         * [] or .. stick to the Armbian script standard?
         * [] or .. mix the two?
     * [] Watch out for board difference VIM3 and VIM3L (user space may need to know)
+    * [] Resetting GPIOH_4 to low and echo (gpio 35) 
 * [] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
 * [] Add wireless and bluetooth (note VIM3/VIM3L differences)
+* [] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [] Debug boot volumio image
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
 * [x] System still bootable from sd when update u-boot on emmc crashed? 
 * [failed] Emergency option, fix via bootloader special recover image (only works on booted device).
-* [] u-boot recovery via specific initrd (simplified installer) This is **THE** killer option.
-
+* [x] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
 * [] Create autoinstaller 
     * [] NOTE!!!!: A current 4.9 kernel MP1 device will not be able to "update" to a Kernel 5.0
