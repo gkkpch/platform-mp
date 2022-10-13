@@ -28,15 +28,15 @@
 * [x] Compress platform files
 * [x] Check u-boot "dd" offsets
 * [x] Check legacy kernel patch(es) from the Volumio Team with Mi, are they still relevant with the mainline kernel? 
+* [ ] Add Volumio patches
+    * [ ] Enable UART3 (dtb overlay)
+    * [ ] Support for higher I2S frequencies (384Khz, check legacy patch)
 
 **Build recipe for mp1 mainline kernel image**
 * [in progress] Develop build recipe for mp1 mainline
     * [x] Extract uboot env (use 'printenv' from u-boot cmd line)
         * [x] Compare with Volumio's legacy u-boot env 
         * [x] Compare with Armbian u-boot script   
-* [ ] Add Volumio patches
-    * [ ] Enable UART3
-    * [ ] Support for higher I2S frequencies (384Khz, check legacy patch)
 * [ ] Setup mainline boot script
     * [x] Volumio-like u-boot script? 
         * [no] or .. stick to the Armbian script standard?
