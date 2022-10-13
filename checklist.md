@@ -27,30 +27,31 @@
 * [x] Test "automated" Armbian kernel/u-boot build for mp1
 * [x] Compress platform files
 * [x] Check u-boot "dd" offsets
-* [] Check legacy kernel patch(es) from the Volumio Team with Mi, are they still relevant with the mainline kernel? 
+* [x] Check legacy kernel patch(es) from the Volumio Team with Mi, are they still relevant with the mainline kernel? 
 
 **Build recipe for mp1 mainline kernel image**
 * [in progress] Develop build recipe for mp1 mainline
     * [x] Extract uboot env (use 'printenv' from u-boot cmd line)
         * [x] Compare with Volumio's legacy u-boot env 
         * [x] Compare with Armbian u-boot script   
-* [] Add Volumio patches
-    * [] Enable UART3
-    * [] Support for higher I2S frequencies (384Khz, check legacy patch)
-* [] Setup mainline boot script
+* [ ] Add Volumio patches
+    * [ ] Enable UART3
+    * [ ] Support for higher I2S frequencies (384Khz, check legacy patch)
+* [ ] Setup mainline boot script
     * [x] Volumio-like u-boot script? 
         * [no] or .. stick to the Armbian script standard?
         * [x] or .. mix the two?
+        * [ ] Add overlay dtb handling (see Armbian boot script)
     * [x] Watch out for board difference VIM3 and VIM3L (user space may need to know)
     * [fails] Resetting GPIOH_4 to low and echo (gpio 35)  
-        * [] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
-    * [] Create boot.scr form boot.ini (boot.ini not working with mainline)
+        * [ ] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
+    * [ ] Create boot.scr form boot.ini (boot.ini not working with mainline)
         * [x] Initial boot.scr working?
-    * [] Recreate "multiboot": "usb -> sd -> emmc" sequence 
+    * [ ] Recreate "multiboot": "usb -> sd -> emmc" sequence 
 * [x] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
-* [] Add wireless and bluetooth (note VIM3/VIM3L differences)
-* [] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
-* [] Debug boot volumio image
+* [ ] Add wireless and bluetooth (note VIM3/VIM3L differences)
+* [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
+* [ ] Debug boot volumio image
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
@@ -59,11 +60,11 @@
 * [x] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
 **Autoinstaller and u-boot recovery**
-* [] Create autoinstaller 
-    * [] NOTE!!!!: A current 4.9 kernel MP1 device will not be able to "update" to a Kernel 5.0
+* [ ] Create autoinstaller 
+    * [ ] NOTE!!!!: A current 4.9 kernel MP1 device will not be able to "update" to a Kernel 5.0
     This is because it needs a mainline u-boot, we can't change u-boot just with the Volumio updater.
     It will need a full-proof initramfs fix, not sure how to do that yet.
-* [] Create simple u-boot recovery image 
+* [ ] Create simple u-boot recovery image 
 
 <br />
 <br />
