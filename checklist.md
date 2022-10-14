@@ -49,7 +49,11 @@
         * [x] Initial boot.scr working?
     * [ ] Recreate "multiboot": "usb -> sd -> emmc" sequence 
 * [x] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
+* [x] Check Khadas Fenix BSP (firmware changes for mainline, alsa asound.state etc.)
 * [ ] Add wireless and bluetooth (note VIM3/VIM3L differences)
+    * [ ] Only copy relevant wifi and bluetooth firmware (see fenix/build-board-deb line 349-362 and kvims.sh)
+* [ ] Remove ohdmi.service (depricated) and fan.service (not necessary)
+* [ ] Add mainline asound.state for vim3l
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [ ] Debug boot volumio image
 
@@ -71,5 +75,5 @@
 <br />
 <br />
 [sub]
-2022.10.13/ Gé
+2022.10.14/ Gé
 
