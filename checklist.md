@@ -45,9 +45,11 @@
     * [x] Watch out for board difference VIM3 and VIM3L (user space may need to know)
     * [fails] Resetting GPIOH_4 to low and echo (gpio 35)  
         * [ ] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
+            * [ ] Raise question on Armbian forum
     * [ ] Create boot.scr form boot.ini (boot.ini not working with mainline)
         * [x] Initial boot.scr working?
     * [ ] Recreate "multiboot": "usb -> sd -> emmc" sequence 
+    * [ ] Fix kernel issues resulting from the boot process (nls, more?) 
 * [x] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
 * [x] Check Khadas Fenix BSP (firmware changes for mainline, alsa asound.state etc.)
 * [ ] Add wireless and bluetooth (note VIM3/VIM3L differences)

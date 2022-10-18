@@ -35,6 +35,7 @@ cp output/debs/armbian-firmware_*.deb ../platform-mp/armbian/debs
 cp output/debs/linux-headers-*.deb ../platform-mp/armbian/debs
 cp output/debs/linux-image-*.deb ../platform-mp/armbian/debs
 cp output/debs/linux-u-boot-*.deb ../platform-mp/armbian/debs
+cp output/config/linux-meson64-current.config ../platform-mp/armbian/config
 EOF
 sudo chmod +x compile-custom-mp1.sh
 #
