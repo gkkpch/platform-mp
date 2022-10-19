@@ -37,7 +37,7 @@
     * [x] Extract uboot env (use 'printenv' from u-boot cmd line)
         * [x] Compare with Volumio's legacy u-boot env 
         * [x] Compare with Armbian u-boot script   
-* [ ] Setup mainline boot script
+* [x] Setup mainline boot script
     * [x] Volumio-like u-boot script? 
         * [no] or .. stick to the Armbian script standard?
         * [x] or .. mix the two?
@@ -45,15 +45,15 @@
     * [x] Watch out for board difference VIM3 and VIM3L (user space may need to know)
     * [fails] Resetting GPIOH_4 to low and echo (gpio 35)  
         * [ ] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
-            * [ ] Raise question on Armbian forum
-    * [ ] Create boot.scr form boot.ini (boot.ini not working with mainline)
+            * [x] Raise question on Armbian forum
+    * [x] Create boot.scr form boot.ini (boot.ini not working with mainline)
         * [x] Initial boot.scr working?
-    * [ ] Recreate "multiboot": "usb -> sd -> emmc" sequence 
-    * [ ] Fix kernel issues resulting from the boot process (nls, more?) 
+    * [x] Recreate "multiboot": "usb -> sd -> emmc" sequence 
+    * [ ] Fix kernel issues resulting from the boot process (nls, alsa, br4cmfmac4359-sdio.khadas.vim3l.txt, more?) 
 * [x] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
 * [x] Check Khadas Fenix BSP (firmware changes for mainline, alsa asound.state etc.)
-* [ ] Add wireless and bluetooth (note VIM3/VIM3L differences)
-    * [ ] Only copy relevant wifi and bluetooth firmware (see fenix/build-board-deb line 349-362 and kvims.sh)
+* [x] Add wireless and bluetooth (note VIM3/VIM3L differences)
+    * [x] Only copy relevant wifi and bluetooth firmware (see fenix/build-board-deb line 349-362 and kvims.sh)
 * [ ] Remove ohdmi.service (depricated) and fan.service (not necessary)
 * [ ] Add mainline asound.state for vim3l
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
@@ -77,5 +77,5 @@
 <br />
 <br />
 [sub]
-2022.10.14/ Gé
+2022.10.19/ Gé
 
