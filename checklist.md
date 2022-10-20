@@ -18,6 +18,13 @@
     * [x] Extract mainline boot script for reference  
   
 **03.10.22/ Preparation completed**
+**20.10.22/ Preparation reopened for Khadas Fenix use**
+* [ ] Install khadas-fenix on VM
+* [ ] Document build procedure
+* [x] Contact Khadas (numbqq)
+    * [ ] Follow up on Khadas response
+    * [ ] Fix GPIOH_4
+
 
 **Building volumio-specific kernel and u-boot**
 * [x] Develop "automated" Armbian kernel/u-boot build for mp1
@@ -54,6 +61,11 @@
 * [x] Check Khadas Fenix BSP (firmware changes for mainline, alsa asound.state etc.)
 * [x] Add wireless and bluetooth (note VIM3/VIM3L differences)
     * [x] Only copy relevant wifi and bluetooth firmware (see fenix/build-board-deb line 349-362 and kvims.sh)
+
+=== Armbian kernel dropped
+* [ ] **Switch to Khadas uboot/kernel**
+    * [ ] small changes mp1ml (use ".deb"-folder "Khadas", use u-boot binary name "uboot.bin.sd.bin")
+    * [ ] Optimise boot.cmd (minimal)
 * [ ] Remove ohdmi.service (depricated) and fan.service (not necessary)
 * [ ] Add mainline asound.state for vim3l
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
@@ -77,5 +89,5 @@
 <br />
 <br />
 [sub]
-2022.10.19/ Gé
+2022.10.20/ Gé
 

@@ -1,4 +1,19 @@
 
+
+
+## Prerequisites/ recommendation for building with Khadas Fenix
+
+
+- x86/x64 machine running any OS; at least 4G RAM, SSD, quad core (recommended),
+- VirtualBox or similar virtualization software (highly recommended with a minimum of 50GB hard disk space for the virtual disk image)
+- The officially supported compilation environment is Ubuntu Jammy 22.04.x amd64 only!
+- Superuser rights (configured sudo or root access).
+
+20.10.2022 To be rewritten for use of Khadas BSP "Fenix"
+
+
+============================================
+
 ## Prerequisites/ recommendation for building with Armbian
 
 - x86/x64 machine running any OS; at least 4G RAM, SSD, quad core (recommended),
