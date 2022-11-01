@@ -1,4 +1,6 @@
-## Check list for VIM3L mainline kernel 
+## Check list for 
+* **VIM3L mainline kernel & u-boot**
+* **VIM1S vendor kernel & u-boot**
 
 **Preparation work** 
 * [x] Email Igor Pecovnik
@@ -17,21 +19,19 @@
     * [x] Test boot issue
     * [x] Extract mainline boot script for reference  
   
-**03.10.22/ Preparation completed**
+**03.10.22/ Preparation completed**  
 **20.10.22/ Preparation reopened for Khadas Fenix use**
 * [ ] Install khadas-fenix on VM
 * [ ] Document build procedure
 * [x] Contact Khadas (numbqq)
     * [ ] Follow up on Khadas response
-    * [ ] Fix GPIOH_4
-
+    * [ ] Fix GPIOH_4  
 
 **Building volumio-specific kernel and u-boot**
-* [x] Develop "automated" Armbian kernel/u-boot build for mp1
+* [] Develop "automated" Khadas kernel/u-boot build for mp1ml
 * [x] Setup platform files
 * [x] Create default kernel config **linux-meson64-current.config** from the default Ubuntu image
-* [x] Create default patch file **kernel-meson64-current.patch** (using usb audio as an example)
-* [x] Test "automated" Armbian kernel/u-boot build for mp1
+* [x] Test "automated" Khadas kernel/u-boot build for mp1ml
 * [x] Compress platform files
 * [x] Check u-boot "dd" offsets
 * [x] Check legacy kernel patch(es) from the Volumio Team with Mi, are they still relevant with the mainline kernel? 
@@ -39,7 +39,18 @@
     * [ ] Enable UART3 (dtb overlay)
     * [ ] Support for higher I2S frequencies (384Khz, check legacy patch)
 
-**Build recipe for mp1 mainline kernel image**
+
+**28.10.22/ AddVIM1S kernel & u-boot**
+* [x] Develop automated Khadas kernel and u-boot build for mp2
+* [x] VIM1S kernel (5.4)
+* [x] VIM1S u-boot
+* [x] Add to platform files
+* [failed] Test build
+    * [ ] Check Fenix with Khadas 
+    * [ ] Correct build process
+* [ ] Document build procedure
+
+**Build recipe for mp1ml mainline kernel image**
 * [in progress] Develop build recipe for mp1 mainline
     * [x] Extract uboot env (use 'printenv' from u-boot cmd line)
         * [x] Compare with Volumio's legacy u-boot env 
@@ -63,13 +74,20 @@
     * [x] Only copy relevant wifi and bluetooth firmware (see fenix/build-board-deb line 349-362 and kvims.sh)
 
 === Armbian kernel dropped
-* [ ] **Switch to Khadas uboot/kernel**
-    * [ ] small changes mp1ml (use ".deb"-folder "Khadas", use u-boot binary name "uboot.bin.sd.bin")
-    * [ ] Optimise boot.cmd (minimal)
-* [ ] Remove ohdmi.service (depricated) and fan.service (not necessary)
+* [x] **Switch to Khadas uboot/kernel**
+    * [x] small changes mp1ml (use ".deb"-folder "Khadas", use u-boot binary name "uboot.bin.sd.bin")
+    * [x] Optimise boot.cmd (minimal)
+* [x] Remove ohdmi.service (depricated) and fan.service (not necessary)
 * [ ] Add mainline asound.state for vim3l
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [ ] Debug boot volumio image
+
+**Build recipe for mp2**
+* [x] Make an mps-family from mp1ml.sh and mp2.sh
+* [ ] Create mp2.sh 
+* [ ] Test mp2.sh boot process
+* [ ] See if we can change the extlinux.conf method to boot.scr
+* [ ] Adapt boot process to volumio requirements
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
@@ -77,17 +95,17 @@
 * [failed] Emergency option, fix via bootloader special recover image (only works on booted device).
 * [x] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
-**Autoinstaller and u-boot recovery**
+**Autoinstallers and u-boot recovery for mp1ml**
 * [ ] Create autoinstaller 
     * [ ] NOTE!!!!: A current 4.9 kernel MP1 device will not be able to "update" to a Kernel 5.0
     This is because it needs a mainline u-boot, we can't change u-boot just with the Volumio updater.
     It will need a full-proof initramfs fix, not sure how to do that yet.
-* [ ] Create simple u-boot recovery image 
+* [ ] Create simple u-boot recovery image for mp1ml
 
 <br />
 <br />
 <br />
 <br />
 [sub]
-2022.10.20/ Gé
+2022.11.01/ Gé
 
