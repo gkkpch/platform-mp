@@ -100,6 +100,13 @@
 * [failed] Emergency option, fix via bootloader special recover image (only works on booted device).
 * [x] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
+**Tweaking mp1/mp2 performance (rc.local)**
+* [ ] Set cpufreqs
+* [ ] Set smp-affinity
+* [ ] Activate WOL
+* [ ] Remove console log
+* [ ] Add Plymouth (take fenix settings as sample)
+
 **Autoinstallers and u-boot recovery for mp1ml**
 * [ ] Create autoinstaller 
     * [ ] NOTE!!!!: A current 4.9 kernel MP1 device will not be able to "update" to a Kernel 5.0
