@@ -21,11 +21,12 @@
   
 **03.10.22/ Preparation completed**  
 **20.10.22/ Preparation reopened for Khadas Fenix use**
-* [ ] Install khadas-fenix on VM
-* [ ] Document build procedure
+* [x] Install khadas-fenix on VM
+* [ ] Document build procedure (README.md)
 * [x] Contact Khadas (numbqq)
     * [ ] Follow up on Khadas response
     * [ ] Fix GPIOH_4  
+    * [ ] Why is Fenix failing since 28.10??
 
 **Building volumio-specific kernel and u-boot**
 * [] Develop "automated" Khadas kernel/u-boot build for mp1ml
@@ -48,7 +49,7 @@
 * [failed] Test build
     * [ ] Check Fenix with Khadas 
     * [ ] Correct build process
-* [ ] Document build procedure
+* [ ] Document build procedure (README.md)
 
 **Build recipe for mp1ml mainline kernel image**
 * [in progress] Develop build recipe for mp1 mainline
