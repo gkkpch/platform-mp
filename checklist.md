@@ -22,34 +22,36 @@
 **03.10.22/ Preparation completed**  
 **20.10.22/ Preparation reopened for Khadas Fenix use**
 * [x] Install khadas-fenix on VM
-* [ ] Document build procedure (README.md)
+
 * [x] Contact Khadas (numbqq)
     * [ ] Follow up on Khadas response
     * [ ] Fix GPIOH_4  
-    * [ ] Why is Fenix failing since 28.10??
+    * [x] Why is Fenix failing since 28.10 --> Fenix 1.2.2 required
 
 **Building volumio-specific kernel and u-boot**
-* [] Develop "automated" Khadas kernel/u-boot build for mp1ml
+* [ ] Develop automated Khadas kernel and u-boot build for mp1ml
+* [ ] Document build procedure (README.md)
 * [x] Setup platform files
 * [x] Create default kernel config **linux-meson64-current.config** from the default Ubuntu image
 * [x] Test "automated" Khadas kernel/u-boot build for mp1ml
 * [x] Compress platform files
 * [x] Check u-boot "dd" offsets
 * [x] Check legacy kernel patch(es) from the Volumio Team with Mi, are they still relevant with the mainline kernel? 
-* [ ] Add Volumio patches
-    * [ ] Enable UART3 (dtb overlay)
-    * [ ] Support for higher I2S frequencies (384Khz, check legacy patch)
+* [x] Add Volumio patches
+    * [x] Enable UART3 (dtb overlay)
+    * [?] Support for higher I2S frequencies (384Khz, check legacy patch)
 
 
 **28.10.22/ AddVIM1S kernel & u-boot**
-* [x] Develop automated Khadas kernel and u-boot build for mp2
+* [ ] Develop automated Khadas kernel and u-boot build for mp2
+* [ ] Document build procedure (README.md)
 * [x] VIM1S kernel (5.4)
 * [x] VIM1S u-boot
 * [x] Add to platform files
 * [failed] Test build
-    * [ ] Check Fenix with Khadas 
-    * [ ] Correct build process
-* [ ] Document build procedure (README.md)
+    * [x] Check Fenix with Khadas (Fenix 1.2.2 required)
+    * [x] Correct build process
+
 
 **Build recipe for mp1ml mainline kernel image**
 * [in progress] Develop build recipe for mp1 mainline
@@ -79,16 +81,18 @@
     * [x] small changes mp1ml (use ".deb"-folder "Khadas", use u-boot binary name "uboot.bin.sd.bin")
     * [x] Optimise boot.cmd (minimal)
 * [x] Remove ohdmi.service (depricated) and fan.service (not necessary)
+* [ ] Add missing services & settings
 * [ ] Add mainline asound.state for vim3l
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [ ] Debug boot volumio image
 
 **Build recipe for mp2**
 * [x] Make an mps-family from mp1ml.sh and mp2.sh
-* [ ] Create mp2.sh 
+* [x] Create mp2.sh 
 * [ ] Test mp2.sh boot process
 * [ ] See if we can change the extlinux.conf method to boot.scr
 * [ ] Adapt boot process to volumio requirements
+* [ ] Enhance mp2.sh with vim1s specific settings & services
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
