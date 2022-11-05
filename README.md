@@ -42,7 +42,7 @@ $ cd $HOME
 $ git clone https://${GH_TOKEN}github.com/gkkpch/platform-mp
 $ cd platform-mp
 $ cp lib/*.sh ../
-$ chmod +x make-custom-mp*.sh
+$ chmod +x *.sh
 $ cd ..
 $ git clone http://github.com/khadas/fenix fenix-mp1 --depth 1         # VIM3L
 $ git clone http://github.com/khadas/fenix fenix-mp2 --depth 1         # VIM1S
