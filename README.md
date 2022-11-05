@@ -13,7 +13,6 @@
 ### **Recommendation**
 Compilation environment support changes from time to time.
 A Virtualbox is therefore strongly advised as it gives you more flexibility when your build environment needs to be changed.
-Please check https://docs.armbian.com/Developer-Guide_Build-Preparation/ for current needs.
 
 ### **Notes on kernel and u-boot version**
 Fenix currently supports 
@@ -42,7 +41,7 @@ Prepare the build environment with 2 seperate fenix script folders
 $ cd $HOME
 $ git clone https://${GH_TOKEN}github.com/gkkpch/platform-mp
 $ cd platform-mp
-$ cp lib/make-custom-mp1.sh make-custom-mp2.sh ../
+$ cp lib/*.sh ../
 $ chmod +x make-custom-mp*.sh
 $ cd ..
 $ git clone http://github.com/khadas/fenix fenix-mp1 --depth 1         # VIM3L
@@ -56,12 +55,12 @@ Use this when you initially build kernel and u-boot or when taking Fenix updates
 
 ```
 $ cd $HOME
-./make-uboot-mp2.sh
+$ ./make-uboot-mp2.sh
 ```
 ### VIM3L
 ```
 $ cd $HOME
-./make-uboot-mp1.sh
+$ ./make-uboot-mp1.sh
 ```
 
 After succesfull compilation, the u-boot .deb package is transferred automatically to the correct khadas/debs subfolder in the platform repo. It will be used by the Volumio build recipies.
@@ -71,10 +70,12 @@ After succesfull compilation, the u-boot .deb package is transferred automatical
 For VIM1S 
 
 ```
+$ cd $HOME
 $ ./custom-kernel-mp2.sh
 ```
 For VIM3L
 ```
+$ cd $HOME
 $ ./custom-kernel.mp1.sh
 ```
 The script has 5 stages
