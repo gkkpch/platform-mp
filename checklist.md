@@ -29,8 +29,8 @@
     * [x] Why is Fenix failing since 28.10 --> Fenix 1.2.2 required
 
 **Building volumio-specific kernel and u-boot**
-* [ ] Develop automated Khadas kernel and u-boot build for mp1ml
-* [ ] Document build procedure (README.md)
+* [x] Develop automated Khadas kernel and u-boot build for mp1ml
+* [x] Document build procedure (README.md)
 * [x] Setup platform files
 * [x] Create default kernel config **linux-meson64-current.config** from the default Ubuntu image
 * [x] Test "automated" Khadas kernel/u-boot build for mp1ml
@@ -43,8 +43,8 @@
 
 
 **28.10.22/ AddVIM1S kernel & u-boot**
-* [ ] Develop automated Khadas kernel and u-boot build for mp2
-* [ ] Document build procedure (README.md)
+* [x] Develop automated Khadas kernel and u-boot build for mp2
+* [x] Document build procedure (README.md)
 * [x] VIM1S kernel (5.4)
 * [x] VIM1S u-boot
 * [x] Add to platform files
@@ -90,8 +90,8 @@
 * [x] Make an mps-family from mp1ml.sh and mp2.sh
 * [x] Create mp2.sh 
 * [ ] Test mp2.sh boot process
-* [ ] See if we can change the extlinux.conf method to boot.scr
-* [ ] Adapt boot process to volumio requirements
+* [x] See if we can change the extlinux.conf method to boot.scr
+* [ ] Adapt boot process to volumio requirements: create uboot script
 * [ ] Enhance mp2.sh with vim1s specific settings & services
 
 **Mainline u-boot boot issue with Volumio updater**
@@ -119,5 +119,5 @@
 <br />
 <br />
 [sub]
-2022.11.01/ Gé
+2022.11.05/ Gé
 
