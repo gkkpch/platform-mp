@@ -89,9 +89,13 @@
 **Build recipe for mp2**
 * [x] Make an mps-family from mp1ml.sh and mp2.sh
 * [x] Create mp2.sh 
-* [ ] Test mp2.sh boot process
-* [x] See if we can change the extlinux.conf method to boot.scr
-* [ ] Adapt boot process to volumio requirements: create uboot script
+* [ ] Test mp2 boot process
+    * [x] See if we can change the extlinux.conf method to boot.ini
+    * [x] Adapt boot proces scripts to volumio requirements: create uboot script boot.ini
+    * [failed] Test boot.ini
+        * [x] boot.ini seems ok, but kernel crashes when reading RAMDISK
+        * [x] notify Khadas and ask for support
+        * [ ] Test ramdisk fix
 * [ ] Enhance mp2.sh with vim1s specific settings & services
 
 **Mainline u-boot boot issue with Volumio updater**
@@ -118,5 +122,5 @@
 <br />
 <br />
 <br />
-<sub> 2022.11.05/ Gé
+<sub> 2022.11.10/ Gé
 
