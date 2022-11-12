@@ -12,6 +12,7 @@ make kernel-clean
 make kernel-config
 make kernel-deb
 cp .config ../platform-mp/khadas/configs/mp1ml
+rm build/images/debs/${VERSION}/VIM3L/*
 cp build/images/debs/${VERSION}/VIM3L/linux-dtb*.deb ../platform-mp/khadas/debs/mp1ml/
 cp build/images/debs/${VERSION}/VIM3L/linux-headers*.deb ../platform-mp/khadas/debs/mp1ml/
 cp build/images/debs/${VERSION}/VIM3L/linux-image*.deb ../platform-mp/khadas/debs/mp1ml/
