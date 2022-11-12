@@ -11,7 +11,7 @@
 * [x] Setup VM Ubuntu Jammy
 * [x] Copy DEXQ build/ adapt for mp1
 * [x] Create a default Armbian buster image as a reference
-* [failed] Test default Armbian image
+* [x] Test default Armbian image
     * [x] Fix mainline boot issue (factory initialised boards won't boot mainline kernel)
     Erase emmc with "store init 3", then boot from SD. Works with the "old" board series. 
     This would also need support from a Volumio core team member on a fresh factory vim3l board ("new" series ref. Andrey).
@@ -48,13 +48,13 @@
 * [x] VIM1S kernel (5.4)
 * [x] VIM1S u-boot
 * [x] Add to platform files
-* [failed] Test build
+* [x] Test build
     * [x] Check Fenix with Khadas (Fenix 1.2.2 required)
     * [x] Correct build process
 
 
 **Build recipe for mp1ml mainline kernel image**
-* [in progress] Develop build recipe for mp1 mainline
+* [x] Develop build recipe for mp1 mainline
     * [x] Extract uboot env (use 'printenv' from u-boot cmd line)
         * [x] Compare with Volumio's legacy u-boot env 
         * [x] Compare with Armbian u-boot script   
@@ -66,11 +66,11 @@
     * [x] Watch out for board difference VIM3 and VIM3L (user space may need to know)
     * [fails] Resetting GPIOH_4 to low and echo (gpio 35)  
         * [ ] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
-            * [x] Raise question on Armbian forum
+            * [x] Raise question on Khadas forum
     * [x] Create boot.scr form boot.ini (boot.ini not working with mainline)
         * [x] Initial boot.scr working?
     * [x] Recreate "multiboot": "usb -> sd -> emmc" sequence 
-    * [ ] Fix kernel issues resulting from the boot process (nls, alsa, br4cmfmac4359-sdio.khadas.vim3l.txt, more?) 
+    * [x] Fix kernel issues resulting from the boot process (nls, alsa, br4cmfmac4359-sdio.khadas.vim3l.txt, more?) 
 * [x] Combine mp1.sh/kvims.sh/nanopim4.sh into a new **mp1ml**
 * [x] Check Khadas Fenix BSP (firmware changes for mainline, alsa asound.state etc.)
 * [x] Add wireless and bluetooth (note VIM3/VIM3L differences)
@@ -95,14 +95,21 @@
     * [failed] Test boot.ini
         * [x] boot.ini seems ok, but kernel crashes when reading RAMDISK
         * [x] notify Khadas and ask for support
-        * [ ] Test ramdisk fix
+        * [ ] Test ramdisk temporary fix with extlinux.conf
+        * [ ] Fix boot.ini to replace extlinux.conf
+    * [failed] Boot first image
+        * [ ] Fix missing dt overlays
+        * [ ] Fix WLAN issues
+        * [ ] Fix USB Audio issues
 * [ ] Enhance mp2.sh with vim1s specific settings & services
+    * [ ] Add bluetooth 
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
-* [x] System still bootable from sd when update u-boot on emmc crashed? 
-* [failed] Emergency option, fix via bootloader special recover image (only works on booted device).
-* [x] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
+    * [x] System still bootable from sd when update u-boot on emmc crashed? 
+    * [failed] Emergency option
+        * [ ] fix via bootloader special recover image (only works on booted device).
+        * [ ] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
 **Tweaking mp1/mp2 performance (rc.local)**
 * [ ] Set cpufreqs
