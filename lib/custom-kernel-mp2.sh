@@ -13,8 +13,6 @@ if [ -f platform-mp/khadas/debs/mp2/khadas-vim1s-linux-5.4-dt-overlays* ];then
    rm platform-mp/khadas/debs/mp2/khadas-vim1s-linux-5.4-dt-overlays* 
 fi   
 cp dt-overlays-debs/jammy/arm64/VIM1S/khadas-vim1s-linux-5.4-dt-overlays_*.deb platform-mp/khadas/debs/mp2/
-
-exit
    
 cd fenix-mp2
 source config/version
@@ -30,9 +28,15 @@ source env/setenv.sh -q -s  KHADAS_BOARD=VIM1S LINUX=5.4 UBOOT=2019.01 DISTRIBUT
 make kernel-clean
 make kernel-config
 make kernel-deb
-cp .config ../platform-mp/khadas/configs/mp2/kvims_defconfig
+echo "Copying kernel config to platform-mp/configs/mp2"
+cp build/linux/.config ../platform-mp/khadas/configs/mp2/kvims_defconfig
 
-rm build/images/debs/$VERSION/VIM1S/*
+echo "Cleaning previous .deb files from platform-mp"
+rm ../platform-mp/khadas/debs/mp2/linux-dtb*.deb
+rm ../platform-mp/khadas/debs/mp2/linux-headers*.deb
+rm ../platform-mp/khadas/debs/mp2/linux-image*.deb
+
+echo "Copying new .deb files to platform-mp/debs/mp2"
 cp build/images/debs/$VERSION/VIM1S/linux-dtb*.deb ../platform-mp/khadas/debs/mp2/
 cp build/images/debs/$VERSION/VIM1S/linux-headers*.deb ../platform-mp/khadas/debs/mp2/
 cp build/images/debs/$VERSION/VIM1S/linux-image*.deb ../platform-mp/khadas/debs/mp2/
