@@ -95,12 +95,15 @@
     * [failed] Test boot.ini
         * [x] boot.ini seems ok, but kernel crashes when reading RAMDISK
         * [x] notify Khadas and ask for support
-        * [ ] Test ramdisk temporary fix with extlinux.conf
+        * [x] Test ramdisk temporary fix with extlinux.conf
         * [ ] Fix boot.ini to replace extlinux.conf
     * [failed] Boot first image
-        * [ ] Fix missing dt overlays
-        * [ ] Fix WLAN issues
-        * [ ] Fix USB Audio issues
+        * [x] Fix missing dt overlays
+        * [x] Fix WLAN issues
+        * [x] Fix USB Audio issues
+        * [ ] Fix ALSA first boot issue "/usr/share/alsa/alsa.conf cannot be accessed"
+            * [x] temporary fix with reinstall libasound2-data and remove /etc/alsa/conf.d
+        * [ ] Implement rc.local for mp2    
 * [ ] Enhance mp2.sh with vim1s specific settings & services
     * [ ] Add bluetooth 
 
@@ -129,5 +132,5 @@
 <br />
 <br />
 <br />
-<sub> 2022.11.12/ Gé
+<sub> 2022.11.16/ Gé
 
