@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-
+echo "Fetch the pre-compiled Khadas vim1s device tree overlay module .deb file"
 if [ ! -e dt-overlays-debs ]; then
    git clone http://github.com/numbqq/dt-overlays-debs --depth=1
 else
@@ -12,6 +12,7 @@ fi
 if [ -f platform-mp/khadas/debs/mp2/khadas-vim1s-linux-5.4-dt-overlays* ];then
    rm platform-mp/khadas/debs/mp2/khadas-vim1s-linux-5.4-dt-overlays* 
 fi   
+echo "... and back it up to the platform folder"
 cp dt-overlays-debs/jammy/arm64/VIM1S/khadas-vim1s-linux-5.4-dt-overlays_*.deb platform-mp/khadas/debs/mp2/
    
 cd fenix-mp2
@@ -36,8 +37,11 @@ rm ../platform-mp/khadas/debs/mp2/linux-dtb*.deb
 rm ../platform-mp/khadas/debs/mp2/linux-headers*.deb
 rm ../platform-mp/khadas/debs/mp2/linux-image*.deb
 
-echo "Copying new .deb files to platform-mp/debs/mp2"
+
+echo "Backup new .deb files to platform-mp/debs/mp2"
 cp build/images/debs/$VERSION/VIM1S/linux-dtb*.deb ../platform-mp/khadas/debs/mp2/
 cp build/images/debs/$VERSION/VIM1S/linux-headers*.deb ../platform-mp/khadas/debs/mp2/
 cp build/images/debs/$VERSION/VIM1S/linux-image*.deb ../platform-mp/khadas/debs/mp2/
+
+
 echo "Done..."
