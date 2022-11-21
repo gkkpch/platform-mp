@@ -85,6 +85,29 @@ The script has 5 stages
 - Backup the kernel configuration to the correct khadas/configs subfolder in the platform repo. It will be picked from there with for the next kernel compile.
 - Copy the kernel .deb packages to the correct khadas/debs subfolder in the platform repo. These will be used by the Volumio build recipies.
 
+## **Build the platform files** ##
+
+This step needs to be done to transfer the necessary information from the previously generated .deb files in to the platform-mp folder used by the Volumio 3 build recipe.
+
+For MP1:
+```
+$ ./build-platform-mp1.sh
+$ cd platform-mp
+$ tar cfJ mp1ml.tar.xz ./mp1ml
+$ git add mp1ml.tar.xz
+$ git commit -m "{your comment}"
+$ git push
+```
+
+For mp2 it is similar
+```
+$ ./build-platform-mp2.sh
+$ cd platform-mp
+$ tar cfJ mp2.tar.xz ./mp2
+$ git add mp2.tar.xz
+$ git commit -m "{your comment}"
+$ git push
+```
 
 
 
