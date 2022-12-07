@@ -1,5 +1,14 @@
 
 
+# **07.12.22: Kernel Compile MP2 has been moved to Debian, so split off from fenix**
+# Fenix is now only used for reference image building and u-boot compilation
+
+
+
+
+
+
+
 # **HOW-TO build a kernel & u-boot using Khadas Fenix**
 ## **Board coverage: VIM1S and VIM3L** 
 ### **Prerequisites** 

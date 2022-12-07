@@ -657,12 +657,8 @@ CONFIG_ARCH_HAS_RELR=y
 CONFIG_ARCH_HAS_GCOV_PROFILE_ALL=y
 # end of GCOV-based kernel profiling
 
-CONFIG_PLUGIN_HOSTCC="g++"
+CONFIG_PLUGIN_HOSTCC=""
 CONFIG_HAVE_GCC_PLUGINS=y
-CONFIG_GCC_PLUGINS=y
-# CONFIG_GCC_PLUGIN_CYC_COMPLEXITY is not set
-# CONFIG_GCC_PLUGIN_LATENT_ENTROPY is not set
-# CONFIG_GCC_PLUGIN_RANDSTRUCT is not set
 # end of General architecture-dependent options
 
 CONFIG_RT_MUTEXES=y
@@ -6035,8 +6031,8 @@ CONFIG_AMLOGIC_PIC_DEC=y
 #
 # V4L2 Video Support
 #
-CONFIG_AMLOGIC_V4L_VIDEO=y
-CONFIG_AMLOGIC_V4L_VIDEO2=y
+# CONFIG_AMLOGIC_V4L_VIDEO is not set
+# CONFIG_AMLOGIC_V4L_VIDEO2 is not set
 # end of V4L2 Video Support
 
 #
@@ -6824,10 +6820,6 @@ CONFIG_LSM="lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,appar
 # Memory initialization
 #
 CONFIG_INIT_STACK_NONE=y
-# CONFIG_GCC_PLUGIN_STRUCTLEAK_USER is not set
-# CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF is not set
-# CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL is not set
-# CONFIG_GCC_PLUGIN_STACKLEAK is not set
 CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y
 # CONFIG_INIT_ON_FREE_DEFAULT_ON is not set
 # end of Memory initialization
