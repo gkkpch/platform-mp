@@ -37,7 +37,6 @@ BOOT_END=80
 BOOT_TYPE=msdos          # msdos or gpt
 BOOT_USE_UUID=yes        # Add UUID to fstab
 IMAGE_END=3800
-
 INIT_TYPE="init.nextarm" # init.{x86/nextarm/nextarm_tvbox}
 
 # Modules that will be added to intramsfs
@@ -125,8 +124,9 @@ abi.cp15_barrier=2
 kernel.dmesg_restrict=0
 EOF
 
-# Bluez looks for firmware in /etc/firmware/
+# Bluez looks for firmware in /etc/firmware/, enable bluetooth stack
   ln -sf /lib/firmware /etc/firmware
+  ln -s /lib/systemd/system/bluetooth-khadas.service" "/etc/systemd/system/multi-user.target.wants/bluetooth-khadas.service
 
 # Patches used by hciattach
   ln -fs /lib/firmware/brcm/BCM43438A1.hcd /lib/firmware/brcm/BCM43430A1.hcd # AP6212
