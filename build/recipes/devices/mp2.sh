@@ -107,8 +107,13 @@ device_chroot_tweaks_pre() {
   sed -i "s/#bootpart=UUID=/bootpart=UUID=${UUID_BOOT}/g" /boot/uEnv.txt
   sed -i "s/#datapart=UUID=/datapart=UUID=${UUID_DATA}/g" /boot/uEnv.txt
 
+#  cat <<-EOF >>/boot/dtb/amlogic/kvim1s.dtb.overlay.env
+#fdt_overlays=i2s spdifout uart_c renamesound
+#EOF
+  
+  # Do not use i2s for the time being (needs to be checked)
   cat <<-EOF >>/boot/dtb/amlogic/kvim1s.dtb.overlay.env
-fdt_overlays=i2s spdifout uart_c renamesound
+fdt_overlays=spdifout uart_c renamesound
 EOF
 
   log "Fixing armv8 deprecated instruction emulation, allow dmesg"
