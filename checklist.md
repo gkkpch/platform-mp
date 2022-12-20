@@ -24,8 +24,8 @@
 * [x] Install khadas-fenix on VM
 
 * [x] Contact Khadas (numbqq)
-    * [ ] Follow up on Khadas response
-    * [ ] Fix GPIOH_4  
+    * [x] Follow up on Khadas response
+    * [x] Fix GPIOH_4  
     * [x] Why is Fenix failing since 28.10 --> Fenix 1.2.2 required
 
 **Building volumio-specific kernel and u-boot**
@@ -42,7 +42,7 @@
     * [?] Support for higher I2S frequencies (384Khz, check legacy patch)
 
 
-**28.10.22/ AddVIM1S kernel & u-boot**
+**28.10.22/ Add VIM1S kernel & u-boot**
 * [x] Develop automated Khadas kernel and u-boot build for mp2
 * [x] Document build procedure (README.md)
 * [x] VIM1S kernel (5.4)
@@ -62,11 +62,13 @@
     * [x] Volumio-like u-boot script? 
         * [no] or .. stick to the Armbian script standard?
         * [x] or .. mix the two?
-        * [ ] Add overlay dtb handling (see Armbian boot script)
+        * [x] Add overlay dtb handling (see Armbian boot script)
+        * [ ] Add a new overlay to modify the AML_AUGESOUND cardname (see VIM1S)
     * [x] Watch out for board difference VIM3 and VIM3L (user space may need to know)
     * [fails] Resetting GPIOH_4 to low and echo (gpio 35)  
-        * [ ] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
+        * [x] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
             * [x] Raise question on Khadas forum
+            * [x] Fixed (use "gpio set 20 0")
     * [x] Create boot.scr form boot.ini (boot.ini not working with mainline)
         * [x] Initial boot.scr working?
     * [x] Recreate "multiboot": "usb -> sd -> emmc" sequence 
@@ -89,23 +91,23 @@
 **Build recipe for mp2**
 * [x] Make an mps-family from mp1ml.sh and mp2.sh
 * [x] Create mp2.sh 
-* [ ] Test mp2 boot process
+* [x] Test mp2 boot process
     * [x] See if we can change the extlinux.conf method to boot.ini
     * [x] Adapt boot proces scripts to volumio requirements: create uboot script boot.ini
     * [failed] Test boot.ini
         * [x] boot.ini seems ok, but kernel crashes when reading RAMDISK
         * [x] notify Khadas and ask for support
         * [x] Test ramdisk temporary fix with extlinux.conf
-        * [ ] Fix boot.ini to replace extlinux.conf
+        * [x] Replace boot.ini by extlinux.conf, uEnv.txt, kvim1s.dtb.overlay.env
     * [failed] Boot first image
         * [x] Fix missing dt overlays
         * [x] Fix WLAN issues
         * [x] Fix USB Audio issues
-        * [ ] Fix ALSA first boot issue "/usr/share/alsa/alsa.conf cannot be accessed"
-            * [x] temporary fix with reinstall libasound2-data and remove /etc/alsa/conf.d
-        * [ ] Implement rc.local for mp2    
-* [ ] Enhance mp2.sh with vim1s specific settings & services
-    * [ ] Add bluetooth 
+        * [x] Fix ALSA first boot issue "/usr/share/alsa/alsa.conf cannot be accessed"
+        * [x] Implement rc.local for mp2
+    * [x] Implement DT overlays, use a Volumio-specific  one for changing the soundcard name    
+* [x] Enhance mp2.sh with vim1s specific settings & services
+    * [x] Add bluetooth, firmware etc. 
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
@@ -117,7 +119,8 @@
 **Tweaking mp1/mp2 performance (rc.local)**
 * [ ] Set cpufreqs
 * [ ] Set smp-affinity
-* [ ] Activate WOL
+* [x] Activate WOL MP2
+* [ ] Activate WOL MP1
 * [ ] Remove console log
 * [ ] Add Plymouth (take fenix settings as sample)
 
@@ -132,5 +135,5 @@
 <br />
 <br />
 <br />
-<sub> 2022.11.16/ Gé
+<sub> 2022.12.20/ Gé
 
