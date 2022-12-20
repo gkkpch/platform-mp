@@ -17,8 +17,10 @@ UINITRD_ARCH="arm64"
 ### Device information
 DEVICENAME="Volumio MP2"
 DEVICE="mp2"
+# This is useful for multiple devices sharing the same/similar kernel
 DEVICEFAMILY="mp"
 DEVICEBASE="mp2"
+# tarball from DEVICEFAMILY repo to use
 #DEVICEREPO="https://github.com/volumio/platform-${DEVICEFAMILY}.git"
 DEVICEREPO="https://github.com/gkkpch/platform-${DEVICEFAMILY}.git"
 
@@ -36,16 +38,12 @@ BOOT_TYPE=msdos          # msdos or gpt
 BOOT_USE_UUID=yes        # Add UUID to fstab
 IMAGE_END=3800
 INIT_TYPE="init.nextarm" # init.{x86/nextarm/nextarm_tvbox}
+
 # Modules that will be added to intramsfs
 MODULES=("overlay" "squashfs" "nls_cp437" "fuse")
 
 # Packages that will be installed
-PACKAGES=("lirc" "fbset" "bluez-firmware"
-  "bluetooth" "bluez" "bluez-tools" 
-)
-
-### Device customisation
-# Copy the device specific files (Image/DTS/etc..)
+PACKAGES=("lirc" "fbset" )
 
 ### Device customisation
 # Copy the device specific files (Image/DTS/etc..)
@@ -56,13 +54,15 @@ write_device_files() {
   cp -R "${PLTDIR}/${DEVICEBASE}/lib/modules" "${ROOTFSMNT}/lib"
   cp -R "${PLTDIR}/${DEVICEBASE}/lib/firmware" "${ROOTFSMNT}/lib"
 
-  #log "Adding Wifi & Bluetooth firmware and helpers NOT COMPLETED, TBS"
-  #cp "${PLTDIR}/${DEVICEBASE}/hwpacks/bluez/hciattach-armhf" "${ROOTFSMNT}/usr/local/bin/hciattach"
-  #cp "${PLTDIR}/${DEVICEBASE}/hwpacks/bluez/brcm_patchram_plus-armhf" "${ROOTFSMNT}/usr/local/bin/brcm_patchram_plus"
 
-  #log "Adding services"
-  #mkdir -p "${ROOTFSMNT}/lib/systemd/system"
-  #cp "${PLTDIR}/${DEVICEBASE}/lib/systemd/system/bluetooth-khadas.service" "${ROOTFSMNT}/lib/systemd/system"
+
+  log "Adding Wifi & Bluetooth firmware and helpers NOT COMPLETED, TBS"
+  cp "${PLTDIR}/${DEVICEBASE}/hwpacks/bluez/hciattach-armhf" "${ROOTFSMNT}/usr/local/bin/hciattach"
+  cp "${PLTDIR}/${DEVICEBASE}/hwpacks/bluez/brcm_patchram_plus-armhf" "${ROOTFSMNT}/usr/local/bin/brcm_patchram_plus"
+
+  log "Adding services"
+  mkdir -p "${ROOTFSMNT}/lib/systemd/system"
+  cp "${PLTDIR}/${DEVICEBASE}/lib/systemd/system/bluetooth-khadas.service" "${ROOTFSMNT}/lib/systemd/system"
 
   log "Load modules, specific for VIM1S, to /etc/modules" 
   cp "${PLTDIR}/${DEVICEBASE}/etc/modules" "${ROOTFSMNT}/etc"
@@ -70,14 +70,14 @@ write_device_files() {
   log "Add Alsa asound.state" 
   cp -R "${PLTDIR}/${DEVICEBASE}/var" "${ROOTFSMNT}"
 
-  #log "Adding usr/local/bin & usr/bin files"
-  #cp -R "${PLTDIR}/${DEVICEBASE}/usr" "${ROOTFSMNT}"
+  log "Adding usr/local/bin & usr/bin files"
+  cp -R "${PLTDIR}/${DEVICEBASE}/usr" "${ROOTFSMNT}"
 
-  #log "Copying rc.local with all prepared ${DEVICE} tweaks"
-  #cp "${PLTDIR}/${DEVICEBASE}/etc/rc.local" "${ROOTFSMNT}/etc"
+  log "Copying rc.local with all prepared ${DEVICE} tweaks"
+  cp "${PLTDIR}/${DEVICEBASE}/etc/rc.local" "${ROOTFSMNT}/etc"
 
-  #log "Copying triggerhappy configuration"
-  #cp -R "${PLTDIR}/${DEVICEBASE}/etc/triggerhappy" "${ROOTFSMNT}/etc"
+  log "Copying triggerhappy configuration"
+  cp -R "${PLTDIR}/${DEVICEBASE}/etc/triggerhappy" "${ROOTFSMNT}/etc"
 }
 
 write_device_bootloader() {
@@ -93,21 +93,22 @@ device_image_tweaks() {
   :
 }
 
+### Chroot tweaks
+# Will be run in chroot (before other things)
+device_chroot_tweaks() {
+  :
+}
+
 # Will be run in chroot - Pre initramfs
 device_chroot_tweaks_pre() {
   log "Performing device_chroot_tweaks_pre" "ext"
-
-  log "Creating boot parameters from template"
-  #sed -i "s/#imgpart=UUID=/imgpart=UUID=${UUID_IMG}/g" /boot/env.system.txt
-  #sed -i "s/#bootpart=UUID=/bootpart=UUID=${UUID_BOOT}/g" /boot/env.system.txt
-  #sed -i "s/#datapart=UUID=/datapart=UUID=${UUID_DATA}/g" /boot/env.system.txt
 
   sed -i "s/#imgpart=UUID=/imgpart=UUID=${UUID_IMG}/g" /boot/uEnv.txt
   sed -i "s/#bootpart=UUID=/bootpart=UUID=${UUID_BOOT}/g" /boot/uEnv.txt
   sed -i "s/#datapart=UUID=/datapart=UUID=${UUID_DATA}/g" /boot/uEnv.txt
 
-  cat <<-EOF >>/boot/overlays/kvims.dtb.overlay.env
-fdt_overlays=i2s spdifout uart_c
+  cat <<-EOF >>/boot/dtb/amlogic/kvim1s.dtb.overlay.env
+fdt_overlays=i2s spdifout uart_c renamesound
 EOF
 
   log "Fixing armv8 deprecated instruction emulation, allow dmesg"
@@ -117,6 +118,13 @@ abi.cp15_barrier=2
 #Allow dmesg for non.sudo users
 kernel.dmesg_restrict=0
 EOF
+
+# Bluez looks for firmware in /etc/firmware/
+  ln -sf /lib/firmware /etc/firmware
+
+# Patches used by hciattach
+  ln -fs /lib/firmware/brcm/BCM43438A1.hcd /lib/firmware/brcm/BCM43430A1.hcd # AP6212
+  ln -fs /lib/firmware/brcm/BCM4356A2.hcd /lib/firmware/brcm/BCM4354A2.hcd # AP6356S
 
 }
 
