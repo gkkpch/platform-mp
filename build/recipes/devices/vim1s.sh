@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-## Setup for Volumio "mp2" device (based on Khadas VIM1S)
+## Setup for Khadas VIM1S device.
 # Note: these images are using vendor kernel & u-boot, generated with the
 #       Khadas Fenix build system
 
@@ -15,11 +15,11 @@ BUILD="armv7"
 UINITRD_ARCH="arm64"
 
 ### Device information
-DEVICENAME="Volumio MP2"
-DEVICE="mp2"
+DEVICENAME="Khadas VIM1S"
+DEVICE="vim1s"
 # This is useful for multiple devices sharing the same/similar kernel
 DEVICEFAMILY="mp"
-DEVICEBASE="mp2"
+DEVICEBASE="vim1s"
 # tarball from DEVICEFAMILY repo to use
 #DEVICEREPO="https://github.com/volumio/platform-${DEVICEFAMILY}.git"
 DEVICEREPO="https://github.com/gkkpch/platform-${DEVICEFAMILY}.git"
