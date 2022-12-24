@@ -43,7 +43,7 @@
 
 
 **28.10.22/ Add VIM1S kernel & u-boot**
-* [x] Develop automated Khadas kernel and u-boot build for mp2
+* [x] Develop automated Khadas kernel and u-boot build for VIM1S
 * [x] Document build procedure (README.md)
 * [x] VIM1S kernel (5.4)
 * [x] VIM1S u-boot
@@ -88,10 +88,11 @@
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [ ] Debug boot volumio image
 
-**Build recipe for mp2**
-* [x] Make an mps-family from mp1ml.sh and mp2.sh
-* [x] Create mp2.sh 
-* [x] Test mp2 boot process
+**Build recipe for vim1s**
+* [x] Make an mps-family from mp1ml.sh and vim1s.sh
+* [x] Remove family mps
+* [x] Create vim1s.sh 
+* [x] Test vim1s boot process
     * [x] See if we can change the extlinux.conf method to boot.ini
     * [x] Adapt boot proces scripts to volumio requirements: create uboot script boot.ini
     * [failed] Test boot.ini
@@ -104,9 +105,9 @@
         * [x] Fix WLAN issues
         * [x] Fix USB Audio issues
         * [x] Fix ALSA first boot issue "/usr/share/alsa/alsa.conf cannot be accessed"
-        * [x] Implement rc.local for mp2
+        * [x] Implement rc.local for VIM1S
     * [x] Implement DT overlays, use a Volumio-specific  one for changing the soundcard name    
-* [x] Enhance mp2.sh with vim1s specific settings & services
+* [x] Enhance vim1s.sh with vim1s specific settings & services
     * [x] Add bluetooth, firmware etc. 
 
 **Mainline u-boot boot issue with Volumio updater**
@@ -116,10 +117,10 @@
         * [ ] fix via bootloader special recover image (only works on booted device).
         * [ ] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
-**Tweaking mp1/mp2 performance (rc.local)**
+**Tweaking mp1/vim1s performance (rc.local)**
 * [ ] Set cpufreqs
 * [ ] Set smp-affinity
-* [x] Activate WOL MP2
+* [x] Activate WOL VIM1S
 * [ ] Activate WOL MP1
 * [ ] Remove console log
 * [ ] Add Plymouth (take fenix settings as sample)
@@ -135,5 +136,5 @@
 <br />
 <br />
 <br />
-<sub> 2022.12.20/ Gé
+<sub> 2022.12.24/ Gé
 

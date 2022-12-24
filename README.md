@@ -1,6 +1,6 @@
 
 
-# **07.12.22: Kernel Compile MP2 has been moved to Debian, so split off from fenix**
+# **07.12.22: Kernel Compile VIM1S has been moved to Debian, so split off from fenix**
 # Fenix is now only used for reference image building and u-boot compilation
 
 
@@ -54,7 +54,7 @@ $ cp lib/*.sh ../
 $ chmod +x *.sh
 $ cd ..
 $ git clone http://github.com/khadas/fenix fenix-mp1 --depth 1         # VIM3L
-$ git clone http://github.com/khadas/fenix fenix-mp2 --depth 1         # VIM1S
+$ git clone http://github.com/khadas/fenix fenix-VIM1S --depth 1         # VIM1S
 ```
  
 ## **Compile u-boot**
@@ -64,7 +64,7 @@ Use this when you initially build kernel and u-boot or when taking Fenix updates
 
 ```
 $ cd $HOME
-$ ./make-uboot-mp2.sh
+$ ./make-uboot-VIM1S.sh
 ```
 ### VIM3L
 ```
@@ -80,7 +80,7 @@ For VIM1S
 
 ```
 $ cd $HOME
-$ ./custom-kernel-mp2.sh
+$ ./custom-kernel-VIM1S.sh
 ```
 For VIM3L
 ```
@@ -108,12 +108,12 @@ $ git commit -m "{your comment}"
 $ git push
 ```
 
-For mp2 it is similar
+For VIM1S it is similar
 ```
-$ ./build-platform-mp2.sh
+$ ./build-platform-VIM1S.sh
 $ cd platform-mp
-$ tar cfJ mp2.tar.xz ./mp2
-$ git add mp2.tar.xz
+$ tar cfJ VIM1S.tar.xz ./VIM1S
+$ git add VIM1S.tar.xz
 $ git commit -m "{your comment}"
 $ git push
 ```
