@@ -17,15 +17,15 @@
     This would also need support from a Volumio core team member on a fresh factory vim3l board ("new" series ref. Andrey).
     * [x] Check Khadas/ Armbian forum for help
     * [x] Test boot issue
-    * [x] Extract mainline boot script for reference  
+    * [x] Extract mainline boot script for reference
   
-**03.10.22/ Preparation completed**  
+**03.10.22/ Preparation completed**
 **20.10.22/ Preparation reopened for Khadas Fenix use**
 * [x] Install khadas-fenix on VM
 
 * [x] Contact Khadas (numbqq)
     * [x] Follow up on Khadas response
-    * [x] Fix GPIOH_4  
+    * [x] Fix GPIOH_4
     * [x] Why is Fenix failing since 28.10 --> Fenix 1.2.2 required
 
 **Building volumio-specific kernel and u-boot**
@@ -49,7 +49,7 @@
 * [x] VIM1S u-boot
 * [x] Add to platform files
 * [x] Test build
-    * [x] Check Fenix with Khadas (Fenix 1.2.2 required)
+    * [x] Check Fenix with Khadas (Fenix 1.3 required)
     * [x] Correct build process
 
 
@@ -65,7 +65,7 @@
         * [x] Add overlay dtb handling (see Armbian boot script)
         * [ ] Add a new overlay to modify the AML_AUGESOUND cardname (see VIM1S)
     * [x] Watch out for board difference VIM3 and VIM3L (user space may need to know)
-    * [fails] Resetting GPIOH_4 to low and echo (gpio 35)  
+    * [fails] Resetting GPIOH_4 to low and echo (gpio 35)
         * [x] GPIOH_4 does not exist, fix for mainline u-boot (unknown gpio)
             * [x] Raise question on Khadas forum
             * [x] Fixed (use "gpio set 20 0")
@@ -83,7 +83,7 @@
     * [x] small changes mp1ml (use ".deb"-folder "Khadas", use u-boot binary name "uboot.bin.sd.bin")
     * [x] Optimise boot.cmd (minimal)
 * [x] Remove ohdmi.service (depricated) and fan.service (not necessary)
-* [ ] Add missing services & settings
+* [ ] Add missing services & settings vim3l
 * [ ] Add mainline asound.state for vim3l
 * [ ] Modify initramfs to check for legacy u-boot in "kernel update block" --> replace by mainline u-boot
 * [ ] Debug boot volumio image
@@ -106,14 +106,14 @@
         * [x] Fix USB Audio issues
         * [x] Fix ALSA first boot issue "/usr/share/alsa/alsa.conf cannot be accessed"
         * [x] Implement rc.local for VIM1S
-    * [x] Implement DT overlays, use a Volumio-specific  one for changing the soundcard name    
+    * [x] Implement DT overlays, use a Volumio-specific  one for changing the soundcard name
 * [x] Enhance vim1s.sh with vim1s specific settings & services
     * [x] Add bluetooth, firmware etc. 
 
 **Mainline u-boot boot issue with Volumio updater**
 * [failed] Boot mainline kernel with legacy u-boot
     * [x] System still bootable from sd when update u-boot on emmc crashed? 
-    * [failed] Emergency option
+    * [failed] Emergency option vim3l
         * [ ] fix via bootloader special recover image (only works on booted device).
         * [ ] u-boot recovery via specific initrd (simplified installer). This is **THE** only feasible and working option.
 
@@ -136,5 +136,5 @@
 <br />
 <br />
 <br />
-<sub> 2022.12.24/ Gé
+<sub> 2022.12.29/ Gé
 

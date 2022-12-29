@@ -1,18 +1,6 @@
-
-
-# **07.12.22: Kernel Compile VIM1S has been moved to Debian, so split off from fenix**
-# Fenix is now only used for reference image building and u-boot compilation
-
-
-
-
-
-
-
 # **HOW-TO build a kernel & u-boot using Khadas Fenix**
 ## **Board coverage: VIM1S and VIM3L** 
 ### **Prerequisites** 
-
 
 - x86/x64 machine running any OS; at least 4G RAM, SSD.
 - VirtualBox or similar virtualization software (highly recommended with a minimum of 50GB hard disk space for the virtual disk image).
@@ -24,7 +12,7 @@ Compilation environment support changes from time to time.
 A Virtualbox is therefore strongly advised as it gives you more flexibility when your build environment needs to be changed.
 
 ### **Notes on kernel and u-boot version**
-Fenix currently supports 
+Fenix 1.3 currently supports 
 - VIM1S
     - kernel **5.4.y**
     - u-boot **v2019.01**
@@ -54,7 +42,7 @@ $ cp lib/*.sh ../
 $ chmod +x *.sh
 $ cd ..
 $ git clone http://github.com/khadas/fenix fenix-mp1 --depth 1         # VIM3L
-$ git clone http://github.com/khadas/fenix fenix-VIM1S --depth 1         # VIM1S
+$ git clone http://github.com/khadas/fenix fenix-vim1s --depth 1         # VIM1S
 ```
  
 ## **Compile u-boot**
@@ -64,7 +52,7 @@ Use this when you initially build kernel and u-boot or when taking Fenix updates
 
 ```
 $ cd $HOME
-$ ./make-uboot-VIM1S.sh
+$ ./make-uboot-vim1s.sh
 ```
 ### VIM3L
 ```
@@ -80,7 +68,7 @@ For VIM1S
 
 ```
 $ cd $HOME
-$ ./custom-kernel-VIM1S.sh
+$ ./custom-kernel-vim1s.sh
 ```
 For VIM3L
 ```
@@ -110,10 +98,10 @@ $ git push
 
 For VIM1S it is similar
 ```
-$ ./build-platform-VIM1S.sh
+$ ./build-platform-vim1s.sh
 $ cd platform-mp
-$ tar cfJ VIM1S.tar.xz ./VIM1S
-$ git add VIM1S.tar.xz
+$ tar cfJ vim1s.tar.xz ./vim1s
+$ git add vim1s.tar.xz
 $ git commit -m "{your comment}"
 $ git push
 ```
@@ -126,5 +114,5 @@ $ git push
 <br />
 <sub> Nov. 2022/ Gé koerkamp
 <br />ge.koerkamp@gmail.com
-<br />05.10.2022 v1.0 Initial
+<br />29.10.2022 v1.1   Completed vim1s
 
