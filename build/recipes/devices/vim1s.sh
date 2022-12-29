@@ -30,6 +30,7 @@ UBOOTBIN="u-boot.bin.sd.bin.signed"
 VOLVARIANT=no # Custom Volumio (Motivo/Primo etc)
 MYVOLUMIO=no
 VOLINITUPDATER=yes
+KIOSKMODE=yes
 
 ## Partition info
 BOOT_START=16
