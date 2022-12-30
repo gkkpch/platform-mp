@@ -1,7 +1,6 @@
 #!/bin/bash
 
-FENIX="$HOME/fenix-mp1"
-PLATFORM="$HOME/platform-mp"
+source vim1s.conf
 export NO_GIT_UPDATE=1
 
 
