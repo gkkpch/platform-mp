@@ -53,7 +53,6 @@ rm $PLATFORM/khadas/debs/vim1s/linux-dtb*.deb
 rm $PLATFORM/khadas/debs/vim1s/linux-headers*.deb
 rm $PLATFORM/khadas/debs/vim1s/linux-image*.deb
 
-
 echo "Backup new .deb files to platform-mp/debs/vim1s"
 cp build/images/debs/$VERSION/VIM1S/linux-dtb*.deb $PLATFORM/khadas/debs/vim1s/
 cp build/images/debs/$VERSION/VIM1S/linux-headers*.deb $PLATFORM/khadas/debs/vim1s/

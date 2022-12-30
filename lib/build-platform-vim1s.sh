@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PLATFORM="$HOME/platform-mp"
+source vim1s.conf
 
 echo "Populate $PLATFORM with necessary platform files"
 [ -e "/tmp/linux-image" ] && rm -r /tmp/linux-image

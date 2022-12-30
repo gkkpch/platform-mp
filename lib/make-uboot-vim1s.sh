@@ -1,7 +1,11 @@
 #!/bin/bash
 
+FENIX="$HOME/fenix-mp1"
+PLATFORM="$HOME/platform-mp"
 export NO_GIT_UPDATE=1
-cd fenix-vim1s
+
+
+cd $FENIX
 source config/version
 
 source env/setenv.sh -q -s  KHADAS_BOARD=VIM1S LINUX=5.4 UBOOT=2019.01 DISTRIBUTION=Ubuntu DISTRIB_RELEASE=jammy DISTRIB_RELEASE_VERSION=22.04 DISTRIB_TYPE=server DISTRIB_ARCH=arm64 INSTALL_TYPE=SD-USB COMPRESS_IMAGE=no
@@ -9,12 +13,14 @@ source env/setenv.sh -q -s  KHADAS_BOARD=VIM1S LINUX=5.4 UBOOT=2019.01 DISTRIBUT
 make uboot-deb
 
 echo "Backup u-boot .deb file to platform files"
+rm $PLATFORM/khadas/debs/vim1s/linux-u-boot*.deb
 cp build/images/debs/$VERSION/VIM1S/linux-u-boot*.deb ../platform-mp/khadas/debs/vim1s/
 
 echo "Populate platform-mp with necessary u-boot files"
 [ -e "/tmp/u-boot" ] && rm -r /tmp/u-boot
 mkdir /tmp/u-boot
-dpkg-deb -R ../platform-mp/khadas/debs/vim1s/linux-u-boot* /tmp/u-boot
-cp /tmp/u-boot/usr/lib/u-boot/* ../platform-mp/vim1s/u-boot
+dpkg-deb -R $PLATFORM/khadas/debs/vim1s/linux-u-boot* /tmp/u-boot
+cp /tmp/u-boot/usr/lib/u-boot/* $PLATFORM/vim1s/u-boot
 rm -r /tmp/u-boot
+
 echo "Done..."
