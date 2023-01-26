@@ -12,7 +12,7 @@ Compilation environment support changes from time to time.
 A Virtualbox is therefore strongly advised as it gives you more flexibility when your build environment needs to be changed.
 
 ### **Notes on kernel and u-boot version**
-Fenix 1.4 currently supports 
+Fenix 1.4.2 currently supports 
 - VIM1S
     - kernel **5.4.y**
     - u-boot **v2019.01**
@@ -38,16 +38,15 @@ Prepare the build environment with 2 separate fenix script folders
 ```
 $ cd $HOME
 $ git clone https://${GH_TOKEN}github.com/gkkpch/platform-mp
-$ cd platform-mp
-$ cp lib/*.sh ../
+$ cd platform-mp/lib
 $ chmod +x *.sh
-$ cd ..
+$ cd $HOME
 $ git clone http://github.com/khadas/fenix fenix-mp1 --depth 1         # VIM3L
 $ git clone http://github.com/khadas/fenix fenix-vim1s --depth 1       # VIM1S
 ```
 In case you decide not to clone them to your $HOME folder, then do not forget to
-modify the paths in the ```mp1.conf``` and ```vim1s.conf``` files. You will find these in ```platform-mp/lib```. Best to quickly review these anyway.
-
+modify the paths in the ```mp1.conf``` and ```vim1s.conf``` files.  
+You will find these in ```platform-mp/lib```. Best to quickly review these anyway.
 
 ## **Compile u-boot**
 
@@ -55,12 +54,12 @@ Use this when you initially build kernel and u-boot or when taking Fenix updates
 ### VIM1S
 
 ```
-$ cd $HOME
+$ cd <your platform-mp/lib>
 $ ./make-uboot-vim1s.sh
 ```
 ### VIM3L
 ```
-$ cd $HOME
+$ cd <your platform-mp/lib>
 $ ./make-uboot-mp1.sh
 ```
 
@@ -80,10 +79,10 @@ $ ./custom-kernel.mp1.sh
 ```
 The script has 5 stages
 - Preparation 
-- Kernel configuration (you can leave with <exit> if there is nothing to do)
+- Kernel configuration (you can leave with <exit> when there is nothing to do)
 - Kernel compilation
-- Backup the kernel configuration to the correct khadas/configs subfolder in the platform repo. It will be picked from there with for the next kernel compile.
-- Copy the kernel .deb packages to the correct khadas/debs subfolder in the platform repo. These will be used by the Volumio build recipies.
+- Backing up the kernel configuration to the correct khadas/configs subfolder in the platform repo. It will be picked from there with for the next kernel compile.
+- Copying the kernel .deb packages to the correct khadas/debs subfolder in the platform repo. These will be used by the Volumio build recipies.
 
 ## **Build the platform files** ##
 
@@ -114,8 +113,10 @@ $ git push
 <br />
 <br />
 <br />
-<sub> Nov. 2022/ Gé koerkamp
+<sub> Jan. 2023/ Gé koerkamp
 <br />ge.koerkamp@gmail.com
 <br />29.12.2022 v1.1   Completed vim1s platform build
 <br />30.12.2022 v1.2   Completed mp1 platform build
+<br />25.01.2023 v1.3   Optimized some scripts and documentation
+<br />26.01.2023 v1.4   Updated documentation
 
