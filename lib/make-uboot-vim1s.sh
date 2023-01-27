@@ -13,13 +13,13 @@ make uboot-deb
 
 echo "Backup u-boot .deb file to platform files"
 rm $PLATFORM/khadas/debs/vim1s/linux-u-boot*.deb
-cp build/images/debs/$VERSION/VIM1S/linux-u-boot*.deb ../platform-mp/khadas/debs/vim1s/
+cp build/images/debs/$VERSION/VIM1S/linux-u-boot*.deb ${PLATFORM}/khadas/debs/vim1s/
 
-echo "Populate platform-mp with necessary u-boot files"
+echo "Populate ${PLATFORM} with necessary u-boot files"
 [ -e "/tmp/u-boot" ] && rm -r /tmp/u-boot
 mkdir /tmp/u-boot
-dpkg-deb -R $PLATFORM/khadas/debs/vim1s/linux-u-boot* /tmp/u-boot
-cp /tmp/u-boot/usr/lib/u-boot/* $PLATFORM/vim1s/u-boot
+dpkg-deb -R $PLATFORM/khadas/debs/${DEVICE}/linux-u-boot* /tmp/u-boot
+cp /tmp/u-boot/usr/lib/u-boot/* $PLATFORM/${DEVICE}/u-boot
 rm -r /tmp/u-boot
 
 echo "Done..."

@@ -1,6 +1,6 @@
 #!/bin/bash
-FENIX="$HOME/fenix-mp1"
-PLATFORM="$HOME/platform-mp"
+
+source mp1.conf
 export NO_GIT_UPDATE=1
 
 cd $FENIX
@@ -11,14 +11,14 @@ source env/setenv.sh -q -s  KHADAS_BOARD=VIM3L LINUX=mainline UBOOT=mainline DIS
 make uboot-deb
 
 echo "Backup u-boot .deb file to platform files"
-rm $PLATFORM/khadas/debs/mp1ml/linux-u-boot*.deb
-cp build/images/debs/$VERSION/VIM3L/linux-u-boot*.deb ../platform-mp/khadas/debs/mp1ml/
+rm $PLATFORM/khadas/debs/${DEVICE}/linux-u-boot*.deb
+cp build/images/debs/$VERSION/VIM3L/linux-u-boot*.deb ${PLATFORM}/khadas/debs/${DEVICE}/
 
-echo "Populate platform-mp with necessary u-boot files"
+echo "Populate $PLATFORM with necessary u-boot files"
 [ -e "/tmp/u-boot" ] && rm -r /tmp/u-boot
 mkdir /tmp/u-boot
-dpkg-deb -R $PLATFORM/khadas/debs/mp1ml/linux-u-boot* /tmp/u-boot
-cp /tmp/u-boot/usr/lib/u-boot/* $PLATFORM/mp1ml/u-boot
+dpkg-deb -R $PLATFORM/khadas/debs/${DEVICE}/linux-u-boot* /tmp/u-boot
+cp /tmp/u-boot/usr/lib/u-boot/* $PLATFORM/${DEVICE}/u-boot
 rm -r /tmp/u-boot
 
 echo "Done..."

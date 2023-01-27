@@ -1,8 +1,6 @@
 #!/bin/bash
 
-DT_OVERLAYS="$HOME/dt-overlays-debs"
-PLATFORM="$HOME/platform-mp"
-FENIX="$HOME/fenix-vim1s"
+source vim1s.conf
 export NO_GIT_UPDATE=1
 
 echo "Fetch the pre-compiled Khadas vim1s device tree overlay module .deb file"
@@ -27,16 +25,16 @@ if [ ! -e build/linux ]; then
    git clone http://github.com/khadas/linux -b khadas-vims-5.4.y build/linux --depth=1
    cd build/linux
    echo "Backup original Khadas kernel config"
-   cp arch/arm64/configs/kvims_defconfig $PLATFORM/khadas/configs/vim1s/kvims_defconfig-original 
+   cp arch/arm64/configs/kvims_defconfig $PLATFORM/khadas/configs/${DEVICE}/kvims_defconfig-original 
    echo "Replace by our own config" 
-   cp $PLATFORM/khadas/configs/vim1s/kvims_defconfig arch/arm64/configs/ 
+   cp $PLATFORM/khadas/configs/${DEVICE}/kvims_defconfig arch/arm64/configs/ 
 else
    cd build/linux
    echo "Temporary restore backup khadas config"
-   cp $PLATFORM/khadas/configs/vim1s/kvims_defconfig-original arch/arm64/configs/kvims_defconfig
+   cp $PLATFORM/khadas/configs/${DEVICE}/kvims_defconfig-original arch/arm64/configs/kvims_defconfig
    git pull
    echo "Replace by our own config"
-   cp $PLATFORM/khadas/configs/vim1s/kvims_defconfig arch/arm64/configs/  
+   cp $PLATFORM/khadas/configs/${DEVICE}/kvims_defconfig arch/arm64/configs/  
 fi
 
 cd $FENIX
@@ -46,17 +44,17 @@ make kernel-clean
 make kernel-config
 make kernel-deb
 echo "Copying kernel config to platform-mp/configs/vim1s"
-cp build/linux/.config $PLATFORM/khadas/configs/vim1s/kvims_defconfig
+cp build/linux/.config $PLATFORM/khadas/configs/${DEVICE}/kvims_defconfig
 
 echo "Cleaning previous .deb files from platform-mp"
-rm $PLATFORM/khadas/debs/vim1s/linux-dtb*.deb
-rm $PLATFORM/khadas/debs/vim1s/linux-headers*.deb
-rm $PLATFORM/khadas/debs/vim1s/linux-image*.deb
+rm $PLATFORM/khadas/debs/${DEVICE}/linux-dtb*.deb
+rm $PLATFORM/khadas/debs/${DEVICE}/linux-headers*.deb
+rm $PLATFORM/khadas/debs/${DEVICE}/linux-image*.deb
 
 echo "Backup new .deb files to platform-mp/debs/vim1s"
-cp build/images/debs/$VERSION/VIM1S/linux-dtb*.deb $PLATFORM/khadas/debs/vim1s/
-cp build/images/debs/$VERSION/VIM1S/linux-headers*.deb $PLATFORM/khadas/debs/vim1s/
-cp build/images/debs/$VERSION/VIM1S/linux-image*.deb $PLATFORM/khadas/debs/vim1s/
+cp build/images/debs/$VERSION/VIM1S/linux-dtb*.deb $PLATFORM/khadas/debs/${DEVICE}/
+cp build/images/debs/$VERSION/VIM1S/linux-headers*.deb $PLATFORM/khadas/debs/${DEVICE}/
+cp build/images/debs/$VERSION/VIM1S/linux-image*.deb $PLATFORM/khadas/debs/${DEVICE}/
 
 
 echo "Done..."
