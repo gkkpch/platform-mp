@@ -109,11 +109,10 @@ $ git commit -m "{your comment}"
 $ git push
 ```
 
-
 <br />
+
 ## Changelog
 
-<br />
 <sub> 
 
 |Date|Author|Change
