@@ -111,12 +111,18 @@ $ git push
 
 
 <br />
+## Changelog
+
 <br />
-<br />
-<sub> Jan. 2023/ Gé koerkamp
-<br />ge.koerkamp@gmail.com
-<br />29.12.2022 v1.1   Completed vim1s platform build
-<br />30.12.2022 v1.2   Completed mp1 platform build
-<br />25.01.2023 v1.3   Optimized some scripts and documentation
-<br />26.01.2023 v1.4   Updated documentation
+<sub> 
+
+|Date|Author|Change
+|---|---|---|
+|||gkkpch/ Gé koerkamp/ ge.koerkamp@gmail.com
+|29.12.2022|gkkpch|v1.1 Completed vim1s platform build
+|30.12.2022|gkkpch|v1.2 Completed mp1 platform build
+|25.01.2023|gkkpch|v1.3 Optimized some scripts and documentation
+|26.01.2023|gkkpch|v1.4 Updated documentation
+|30.01.2023|gkkpch|Cleaned up, correct the XATTR/ squashfs issue (lost on 26.01)
+
 
