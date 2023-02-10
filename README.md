@@ -123,5 +123,10 @@ $ git push
 |25.01.2023|gkkpch|v1.3 Optimized some scripts and documentation
 |26.01.2023|gkkpch|v1.4 Updated documentation
 |30.01.2023|gkkpch|Cleaned up, correct the XATTR/ squashfs issue (lost on 26.01)
+|10.02.2023|gkkpch|Patched WiFi: 
+|||meson-g12-common.dtsi, node sd_emmc_a: "interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_HIGH>"
+|||rc.local for restarting brcmfmac (workaround)
+|||bootscript/ env modifications
+|||reguratory db (wireless)
 
 
