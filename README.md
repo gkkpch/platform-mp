@@ -128,5 +128,7 @@ $ git push
 |||rc.local for restarting brcmfmac (workaround)
 |||bootscript/ env modifications
 |||reguratory db (wireless)
+|24.02.2023|gkkpch|Kernel: mmc: meson-gx: fix SDIO mode if cap_sdio_irq isn't set
+|||Kernel: arm64: dts: meson-gx: Make mmc host controller interrupts level-sensitive
 
 
